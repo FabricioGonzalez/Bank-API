@@ -1,20 +1,24 @@
 import { Router, Request, Response } from 'express';
 
-const accountRouter:Router = Router();
+const accountRouter: Router = Router();
 
 // Lists an account
 
-accountRouter.get('/account',(request:Request, response: Response):void=>{
-
-  response.send("ok");
-});
+accountRouter.get(
+  '/account',
+  async (request: Request, response: Response): Promise<void> => {
+    await response.send('ok');
+  },
+);
 
 // Creates an account
-accountRouter.post('/account_create',(request:Request, response: Response):void=>{
+accountRouter.post(
+  '/account_create',
+  async (request: Request, response: Response): Promise<void> => {
+    const account = request.body;
 
-const account = request.body;
-
-response.send(account);
-});
+    await response.send(account);
+  },
+);
 
 export { accountRouter };

@@ -1,5 +1,4 @@
-import config from '../mongo_config';
-
+/* 
 import mongoose, { Mongoose } from 'mongoose';
 
 const dbConfig = config
@@ -14,3 +13,4 @@ await mongoose.connect(dbConfig.mongoUrl, {
 export const close = (): Promise<void> => mongoose.connection.close()
 
 
+ */
