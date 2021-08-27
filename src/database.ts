@@ -1,16 +1,17 @@
-/* 
 import mongoose, { Mongoose } from 'mongoose';
 
-const dbConfig = config
+class MongoDBConnector {
+  async connect(): Promise<Mongoose> {
+    return await mongoose.connect(process.env.MONGOURL, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
 
-export const connect = async(): Promise<Mongoose> => 
-await mongoose.connect(dbConfig.mongoUrl, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+  async close(): Promise<void> {
+    await mongoose.connection.close();
+  }
+}
 
-export const close = (): Promise<void> => mongoose.connection.close()
-
-
- */
+export default MongoDBConnector;
